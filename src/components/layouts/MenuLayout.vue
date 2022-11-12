@@ -23,7 +23,7 @@ export default {
 .header-container
   background-color: #2D2D2D  
   width: 100%
-  height: 8vh
+  height: 10vh
   display: flex 
   justify-content: center
   color: #FFFFFF
