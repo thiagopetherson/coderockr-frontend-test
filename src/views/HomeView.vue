@@ -1,17 +1,17 @@
 <template>
-  <div class="post-list-container">
-    <!--<PostListContainerMultipleItems v-for="(post, index) in posts" :key="index" :post="post" />-->
-    <PostListContainerUniqueItem v-for="(post, index) in posts" :key="index" :post="post" />
+  <div class="post-list-container">      
+    <PostMultiple v-for="(post, index) in posts" :key="index" :post="post" :index="index" />
+    <!--<PostUnique v-for="(post, index) in posts" :key="index" :post="post" />-->
   </div>
 </template>
 
 <script>
-// import PostListContainerMultipleItems from '@/components/posts/PostListContainerMultipleItems.vue'
-import PostListContainerUniqueItem from '@/components/posts/PostListContainerUniqueItem.vue'
+import PostMultiple from '@/components/posts/PostMultiple.vue'
+// import PostUnique from '@/components/posts/PostUnique.vue'
 
 export default {
   name: 'HomeView',
-  components: { PostListContainerUniqueItem },
+  components: { PostMultiple },
   data () {
     return {
       posts: []
@@ -39,6 +39,6 @@ export default {
 .post-list-container
   width: 100%
   display: flex
-  flex-wrap: wrap  
-
+  flex-wrap: wrap
+    
 </style>

@@ -1,12 +1,12 @@
 <template>  
-  <div class="post-list-container-multiple-items">
-    <div class="post-list-container-multiple-items-img">
+  <div class="post-multiple-container">
+    <div class="post-multiple-container-img">
       <img :src="`https://image.tmdb.org/t/p/w500${post.poster_path}`" />
     </div>
-    <div class="post-list-container-multiple-items-body">
-      <p class="post-list-container-multiple-items-body-author">{{post.title}}</p>
-      <p class="post-list-container-multiple-items-body-title">Architecto quos rem unde quia accusantium</p>
-      <p class="post-list-container-multiple-items-description">
+    <div class="post-multiple-container-body">
+      <p class="post-multiple-container-body-author">{{post.title}}</p>
+      <p class="post-multiple-container-body-title">Architecto quos rem unde quia accusantium</p>
+      <p class="post-multiple-container-description">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
         Lorem Ipsum has been the industry's standard dummy
       </p>
@@ -18,28 +18,27 @@
 
 
 export default {
-  name: 'PostListContainerMultipleItems',
+  name: 'PostMultiple',
   props: ['post']  
 }
 </script>
 
 <style scoped lang="sass">
 
-.post-list-container-multiple-items
+.post-multiple-container
   margin-top: 5vh
   width: 50%
   display: flex
-  flex-direction: row
   height: 320px    
 
-  .post-list-container-multiple-items-img
+  .post-multiple-container-img
     width: 34%
 
     img
       width: 100%
       height: 100%
 
-  .post-list-container-multiple-items-body
+  .post-multiple-container-body
     width: 66%
     display: flex
     flex-direction: column
@@ -47,17 +46,19 @@ export default {
     padding: 8% 8% 8% 8%
     background: #FFFFFF
 
-    .post-list-container-multiple-items-body-author
+    .post-multiple-container-body-author
       font-size: 24px
       line-height: 34px
 
-    .post-list-container-multiple-items-body-title
+    .post-multiple-container-body-title
       font-weight: 700
       font-size: 36px
-      line-height: 43px
+      line-height: 38px
       color: #F1A10A
+      padding-top: 2%
+      padding-bottom: 2%
 
-    .post-list-container-multiple-items-body-description
+    .post-multiple-container-body-description
       font-style: normal
       font-weight: 400
       font-size: 24px
