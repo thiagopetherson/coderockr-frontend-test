@@ -1,11 +1,11 @@
 <template>  
-  <div class="post-container post-unique-container">
-    <div class="post-container-img post-unique-container-img">
+  <div class="post-container post-multiple-container">
+    <div class="post-container-img post-multiple-container-img">
       <img :src="`https://image.tmdb.org/t/p/w500${post.poster_path}`" />
     </div>
-    <div class="post-container-body post-unique-container-body">
-      <p class="post-container-body-author post-unique-container-body-author">{{post.title}}</p>
-      <p class="post-container-body-title post-unique-container-body-title">Architecto quos rem unde quia accusantium</p>
+    <div class="post-container-body post-multiple-container-body">
+      <p class="post-container-body-author post-multiple-container-body-author">{{post.title}}</p>
+      <p class="post-container-body-title post-multiple-container-body-title">Architecto quos rem unde quia accusantium</p>
       <p class="post-container-body-description">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
         Lorem Ipsum has been the industry's standard dummy

@@ -1,5 +1,5 @@
 <template>
-  <div class="post-list-container">      
+  <div class="home">      
     <PostMultiple v-for="(post, index) in posts" :key="index" :post="post" :index="index" />
     <!--<PostUnique v-for="(post, index) in posts" :key="index" :post="post" />-->
   </div>
@@ -22,7 +22,7 @@ export default {
       await this.axios.get(`${this.baseUrl}`)        
       .then(response => {   
         this.posts = response.data.results
-        console.log(this.posts)
+        //console.log(this.posts)
       })
       .catch(error => {
         console.log(error)

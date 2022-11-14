@@ -6,15 +6,29 @@
       </div>
         <div class="nav-items">
           <div class="">Posts</div>
-          <div class="">Contact</div>
+          <div class="" @click="showContactModal">Contact</div>
         </div>
     </div>
+    <ContactModalLayout v-if="showModal" @closeModal="showModal = false" /> 
   </header>
 </template>
 
 <script>
+import ContactModalLayout from '@/components/layouts/ContactModalLayout.vue'
+
 export default {
-  name: 'MenuLayout',  
+  name: 'MenuLayout',
+  components: { ContactModalLayout },
+  data () {
+    return {
+      showModal: false,
+    }
+  },
+  methods: {
+    showContactModal () {
+      this.showModal = !this.showModal
+    }
+  }
 }
 </script>
 
@@ -42,6 +56,9 @@ export default {
 
     .nav-items     
       display: flex
+
+      div
+        cursor: pointer
 
       div:first-child
         margin-right: 2em    
