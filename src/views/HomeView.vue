@@ -1,6 +1,6 @@
 <template>
   <div class="home">      
-    <PostMultiple v-for="(post, index) in posts" :key="index" :post="post" @actionNextPosts="nextPosts" :index="index" />
+    <PostMultiple v-for="(post, index) in posts" :key="index" :post="post" :index="index" :displayNormal="displayNormal ? 'row' : 'row-reverse'" @actionNextPosts="nextPosts" />
     <!--<PostUnique v-for="(post, index) in posts" :key="index" :post="post" />-->
     <div v-if="loading" class="loading">
       <img src="@/assets/loading.gif">
@@ -20,11 +20,12 @@ export default {
       posts: [],
       page: 1,
       loading: false,
+      displayNormal: true,
     }
   },
   methods: {
     async getPosts () {      
-      await this.axios.get(`${this.baseUrl}?_page=${this.page}&_limit=5`)        
+      await this.axios.get(`${this.baseUrl}?_page=${this.page}&_limit=3`)        
       .then(response => {        
         this.posts = response.data
         console.log(this.posts)
@@ -36,17 +37,18 @@ export default {
     nextPosts () {    
       this.loading = true
       this.page++
-      this.axios.get(`${this.baseUrl}?_page=${this.page}&_limit=5`)
+      this.axios.get(`${this.baseUrl}?_page=${this.page}&_limit=3`)
       .then(response => {            
         response.data.forEach(item => {
           console.log(item)
           this.posts.push(item)
+          this.displayNormal = !this.displayNormal
         })
       })
       .catch(error => {
         console.log(error)
       })
-      .finally(() => {
+      .finally(() => {        
         this.loading = false
       }) 
     }

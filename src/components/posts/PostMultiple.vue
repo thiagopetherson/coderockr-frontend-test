@@ -1,21 +1,16 @@
 <template>  
-  <div class="post-container post-multiple-container">
-    <div class="post-container-img post-multiple-container-img">
+  <div class="post-container" :class="[postType]" :style="{ flexDirection: direction }">
+    <div class="post-container-img" :class="[`${postType}-img`]">
       <img :src="`${post.image}`" />
     </div>
-    <div class="post-container-body post-multiple-container-body">
-      <p class="post-container-body-author post-multiple-container-body-author">{{ post.author.name }}</p>
-      <p class="post-container-body-title post-multiple-container-body-title">{{ post.title }}</p>
+    <div class="post-container-body" :class="[`${postType}-body`]">
+      <p class="post-container-body-author" :class="[`${postType}-body-author`]">{{ post.author.name }}</p>
+      <p class="post-container-body-title" :class="[`${postType}-body-title`]">{{ post.title }}</p>
       <p class="post-container-body-description">{{ characterLimiter(post.content, 120) }}...</p>
       <router-link class="post-container-body-icon" :to="`/post/${post.id}`">
         <span class="material-symbols-outlined">keyboard_double_arrow_right</span>
       </router-link>
-    </div>
-    <!--
-    <div class="post-container-icon">
-      <span class="material-symbols-outlined icon-go-post">keyboard_double_arrow_right</span>
-    </div>
-    -->
+    </div>   
   </div>  
 </template>
 
@@ -24,8 +19,13 @@ import globalMixins from '@/mixins/globalMixins'
 
 export default {
   name: 'PostMultiple',
-  props: ['post'],
+  props: ['post','index','displayNormal'],
   mixins: [globalMixins],
+  data () {
+    return {
+      direction: this.displayNormal
+    }
+  },
   methods: {
     getNextPosts () {
       // Infinite Scroll
@@ -38,7 +38,14 @@ export default {
       }
     }
   },
+  computed: { 
+    postType () {
+      return (this.index + 1) % 3 === 0 ? 'post-unique-container' : 'post-multiple-container'
+    }
+  },
   mounted () {
+    console.log(this.displayNormal)
+    console.log(this.index + 1)
     this.getNextPosts()
   }
 }
@@ -48,7 +55,7 @@ export default {
 
 .post-container
   margin-top: 5vh
-  display: flex
+  display: flex  
 
   .post-container-body    
     display: flex
@@ -73,7 +80,7 @@ export default {
 
     .post-container-body-icon
       color: #032937
-      align-self: flex-end   
+      align-self: flex-end
 
 .post-multiple-container
   width: 50%
@@ -121,5 +128,8 @@ export default {
       line-height: 43px      
       padding-top: 3.5%
       padding-bottom: 3.5%
+
+.post-container-reverse
+  flex-direction: row-reverse
 
 </style>
