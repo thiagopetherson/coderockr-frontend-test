@@ -1,7 +1,6 @@
 <template>
   <div class="home">      
-    <PostMultiple v-for="(post, index) in posts" :key="index" :post="post" :index="index" :displayNormal="displayNormal ? 'row' : 'row-reverse'" @actionNextPosts="nextPosts" />
-    <!--<PostUnique v-for="(post, index) in posts" :key="index" :post="post" />-->
+    <PostList v-for="(post, index) in posts" :key="index" :post="post" :index="index" :displayNormal="displayNormal ? 'row' : 'row-reverse'" @actionNextPosts="nextPosts" />
     <div v-if="loading" class="loading">
       <img src="@/assets/loading.gif">
     </div>
@@ -9,12 +8,11 @@
 </template>
 
 <script>
-import PostMultiple from '@/components/posts/PostMultiple.vue'
-// import PostUnique from '@/components/posts/PostUnique.vue'
+import PostList from '@/components/posts/PostList.vue'
 
 export default {
   name: 'HomeView',
-  components: { PostMultiple },
+  components: { PostList },
   data () {
     return {
       posts: [],
@@ -28,7 +26,6 @@ export default {
       await this.axios.get(`${this.baseUrl}?_page=${this.page}&_limit=3`)        
       .then(response => {        
         this.posts = response.data
-        console.log(this.posts)
       })
       .catch(error => {
         console.log(error)
@@ -39,8 +36,7 @@ export default {
       this.page++
       this.axios.get(`${this.baseUrl}?_page=${this.page}&_limit=3`)
       .then(response => {            
-        response.data.forEach(item => {
-          console.log(item)
+        response.data.forEach(item => {         
           this.posts.push(item)
           this.displayNormal = !this.displayNormal
         })
@@ -60,18 +56,18 @@ export default {
 </script>
 
 <style scoped lang="sass">
+@import "@/assets/sass/mixins.sass"
+
 .home
   width: 100%
-  display: flex
+  @include display-direction-justify-align($dis: flex)   
   flex-wrap: wrap
 
   .loading
     height: 10vh
     width: 100vw     
     position: fixed
-    display: flex
-    justify-content: center
-    align-items: center
+    @include display-direction-justify-align($dis: flex, $jus: center, $ali: center)   
     bottom: 0
 
     img

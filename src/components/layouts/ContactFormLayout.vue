@@ -32,20 +32,18 @@ export default {
 </script>
 
 <style scoped lang="sass">
+@import "@/assets/sass/variables.sass"
+@import "@/assets/sass/mixins.sass"
 
 .form-container
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
+  @include display-direction-justify-align($dir: column, $jus: center, $ali: center)
   width: 42%
   // height: 50%
-  background-color: #FFF
+  background-color: $white-color
 
   .form-container-close   
     width: 100%
-    display: flex
-    justify-content: flex-end
+    @include display-direction-justify-align($jus: flex-end)    
 
     .close-modal      
       font-size: 2.5em        
@@ -57,25 +55,21 @@ export default {
   
   .form-container-title
     h1
-      color: #F1A10A
-      font-weight: 700
-      font-size: 36px
-      line-height: 43px
+      color: $primary-color
+      @include font($fs: 36px, $lh: 43px, $fw: 700)     
 
   .form-container-body
     width: 70%
 
     form
-      width: 100%
+      width: 100%     
       display: flex
       flex-direction: column
       color: #000000
 
       .label-form
         margin: 15px 0
-        font-weight: 400
-        font-size: 24px
-        line-height: 34px
+        @include font($fs: 24px, $lh: 34px, $fw: 400)       
 
       .input-form
         box-sizing: border-box
@@ -90,18 +84,14 @@ export default {
         height: 200px    
       
       .btn-form
-        align-self: center
-        display: flex
-        justify-content: center
-        align-items: center
+        @include display-direction-justify-align($jus: center, $ali: center)
+        align-self: center        
         width: 170px
         font-style: normal
-        font-weight: 500
-        font-size: 24px
-        line-height: 34px
+        @include font($fs: 24px, $lh: 34px, $fw: 500)        
         background: #2D2D2D
         border-radius: 4px
-        color: #FFF
+        color: $white-color
         margin-top: 50px
         margin-bottom: 50px
         padding: 7px

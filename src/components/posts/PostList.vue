@@ -18,7 +18,7 @@
 import globalMixins from '@/mixins/globalMixins'
 
 export default {
-  name: 'PostMultiple',
+  name: 'PostList',
   props: ['post','index','displayNormal'],
   mixins: [globalMixins],
   data () {
@@ -43,39 +43,34 @@ export default {
       return (this.index + 1) % 3 === 0 ? 'post-unique-container' : 'post-multiple-container'
     }
   },
-  mounted () {
-    console.log(this.displayNormal)
-    console.log(this.index + 1)
+  mounted () { 
     this.getNextPosts()
   }
 }
 </script>
 
 <style scoped lang="sass">
+@import "@/assets/sass/variables.sass"
+@import "@/assets/sass/mixins.sass"
 
 .post-container
   margin-top: 5vh
-  display: flex  
+  display: flex
 
-  .post-container-body    
-    display: flex
-    flex-direction: column
-    justify-content: center   
-    background: #FFFFFF
+  .post-container-body
+    @include display-direction-justify-align($dir: column, $jus: center)
+    background: $white-color
 
     .post-container-body-author
-      font-size: 24px      
+      @include font($fs: 24px, $lh: 34px, $fw: 400)      
 
     .post-container-body-title
-      font-weight: 700
-      font-size: 36px      
-      color: #F1A10A      
+      @include font($fs: 36px, $lh: 43px, $fw: 700)
+      color: $primary-color     
 
     .post-container-body-description
-      font-style: normal
-      font-weight: 400
-      font-size: 24px
-      line-height: 34px
+      @include font($fs: 24px, $lh: 34px, $fw: 400)
+      font-style: normal      
       color: #2D2D2D
 
     .post-container-body-icon

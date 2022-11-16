@@ -37,26 +37,23 @@ export default {
 </script>
 
 <style scoped lang="sass">
+@import "@/assets/sass/variables.sass"
+@import "@/assets/sass/mixins.sass"
 
 .header-container
   background-color: #2D2D2D  
   width: 100%
   height: 10vh
-  display: flex 
-  justify-content: center
-  color: #FFFFFF
+  @include display-direction-justify-align($jus: center)  
+  color: $white-color
   font-weight: 500
 
   .menu-items
     width: 67%
     height: 100%
-    display: flex
-    justify-content: space-between
-    align-items: center
+    @include display-direction-justify-align($jus: space-between, $ali: center)     
     font-style: normal
-    font-weight: 500
-    font-size: 32px
-    line-height: 38px
+    @include font($fs: 32px, $lh: 38px, $fw: 500)
 
     .nav-items     
       display: flex
@@ -65,7 +62,7 @@ export default {
         cursor: pointer
 
         a
-          color: #FFF
+          color: $white-color
           text-decoration: none         
 
       div:first-child

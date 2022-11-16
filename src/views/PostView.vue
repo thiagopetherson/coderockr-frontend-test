@@ -1,6 +1,6 @@
 <template>  
   <div class="post-container">
-    <PostItemLayout :post="post" />
+    <PostItemLayout v-if="post" :post="post" />
   </div>  
 </template>
 
@@ -18,10 +18,9 @@ export default {
   },
   methods: {
     async getPost () {
-      await this.axios.get(`https://api.themoviedb.org/3/movie/${this.id}?api_key=7c239e80ee7bf4bc9b4fcea4906f0e3f&language=pt-BR`)        
+      await this.axios.get(`${this.baseUrl}/${this.id}`)        
         .then(response => {          
-          this.post = response.data
-          console.log(this.post.poster_path)       
+          this.post = response.data              
         })  
     }
   },
@@ -32,11 +31,12 @@ export default {
 </script>
 
 <style scoped lang="sass">
+@import "@/assets/sass/mixins.sass"
+
 .post-container
   width: 100%
   height: 2030px // 1612px
-  display: flex
-  justify-content: center
+  @include display-direction-justify-align($jus: center)   
   margin-top: 5vh
 
 </style>
