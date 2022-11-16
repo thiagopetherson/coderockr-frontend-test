@@ -1,7 +1,10 @@
 <template>
   <div class="home">      
-    <PostMultiple v-for="(post, index) in posts" :key="index" :post="post" :index="index" />
+    <PostMultiple v-for="(post, index) in posts" :key="index" :post="post" @actionNextPosts="nextPosts" :index="index" />
     <!--<PostUnique v-for="(post, index) in posts" :key="index" :post="post" />-->
+    <div v-if="loading" class="loading">
+      <img src="@/assets/loading.gif">
+    </div>
   </div>
 </template>
 
@@ -14,24 +17,43 @@ export default {
   components: { PostMultiple },
   data () {
     return {
-      posts: []
+      posts: [],
+      page: 1,
+      loading: false,
     }
   },
   methods: {
-    async getPosts () {
-      await this.axios.get(`${this.baseUrl}`)        
-      .then(response => {   
-        this.posts = response.data.results
-        //console.log(this.posts)
+    async getPosts () {      
+      await this.axios.get(`${this.baseUrl}?_page=${this.page}&_limit=5`)        
+      .then(response => {        
+        this.posts = response.data
+        console.log(this.posts)
+      })
+      .catch(error => {
+        console.log(error)
+      })     
+    },
+    nextPosts () {    
+      this.loading = true
+      this.page++
+      this.axios.get(`${this.baseUrl}?_page=${this.page}&_limit=5`)
+      .then(response => {            
+        response.data.forEach(item => {
+          console.log(item)
+          this.posts.push(item)
+        })
       })
       .catch(error => {
         console.log(error)
       })
+      .finally(() => {
+        this.loading = false
+      }) 
     }
   },
-  mounted () {
+  beforeMount () {
     this.getPosts()
-  }
+  }  
 }
 </script>
 
@@ -40,5 +62,18 @@ export default {
   width: 100%
   display: flex
   flex-wrap: wrap
+
+  .loading
+    height: 10vh
+    width: 100vw     
+    position: fixed
+    display: flex
+    justify-content: center
+    align-items: center
+    bottom: 0
+
+    img
+      width: 50px
+      height: 50px
     
 </style>

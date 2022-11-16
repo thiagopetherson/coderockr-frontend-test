@@ -1,15 +1,12 @@
 <template>  
   <div class="post-container post-multiple-container">
     <div class="post-container-img post-multiple-container-img">
-      <img :src="`https://image.tmdb.org/t/p/w500${post.poster_path}`" />
+      <img :src="`${post.image}`" />
     </div>
     <div class="post-container-body post-multiple-container-body">
-      <p class="post-container-body-author post-multiple-container-body-author">{{post.title}}</p>
-      <p class="post-container-body-title post-multiple-container-body-title">Architecto quos rem unde quia accusantium</p>
-      <p class="post-container-body-description">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-        Lorem Ipsum has been the industry's standard dummy
-      </p>
+      <p class="post-container-body-author post-multiple-container-body-author">{{ post.author.name }}</p>
+      <p class="post-container-body-title post-multiple-container-body-title">{{ post.title }}</p>
+      <p class="post-container-body-description">{{ characterLimiter(post.content, 120) }}...</p>
       <router-link class="post-container-body-icon" :to="`/post/${post.id}`">
         <span class="material-symbols-outlined">keyboard_double_arrow_right</span>
       </router-link>
@@ -23,11 +20,27 @@
 </template>
 
 <script>
-
+import globalMixins from '@/mixins/globalMixins'
 
 export default {
   name: 'PostMultiple',
-  props: ['post']  
+  props: ['post'],
+  mixins: [globalMixins],
+  methods: {
+    getNextPosts () {
+      // Infinite Scroll
+      window.onscroll = () => {        
+        let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight >= document.documentElement.scrollHeight
+       
+        if (bottomOfWindow) {
+          this.$emit('actionNextPosts')         
+        }
+      }
+    }
+  },
+  mounted () {
+    this.getNextPosts()
+  }
 }
 </script>
 
