@@ -10,7 +10,15 @@
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
         Lorem Ipsum has been the industry's standard dummy
       </p>
+      <router-link class="post-container-body-icon" :to="`/post/${post.id}`">
+        <span class="material-symbols-outlined">keyboard_double_arrow_right</span>
+      </router-link>
     </div>
+    <!--
+    <div class="post-container-icon">
+      <span class="material-symbols-outlined icon-go-post">keyboard_double_arrow_right</span>
+    </div>
+    -->
   </div>  
 </template>
 
@@ -49,6 +57,10 @@ export default {
       font-size: 24px
       line-height: 34px
       color: #2D2D2D
+
+    .post-container-body-icon
+      color: #032937
+      align-self: flex-end   
 
 .post-multiple-container
   width: 50%

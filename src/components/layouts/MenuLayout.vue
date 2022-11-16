@@ -5,7 +5,11 @@
            Rockr Blog           
       </div>
         <div class="nav-items">
-          <div class="">Posts</div>
+          <div class="">
+            <router-link to="/">
+              Posts
+            </router-link>
+          </div>
           <div class="" @click="showContactModal">Contact</div>
         </div>
     </div>
@@ -44,7 +48,7 @@ export default {
   font-weight: 500
 
   .menu-items
-    width: 60%
+    width: 67%
     height: 100%
     display: flex
     justify-content: space-between
@@ -60,7 +64,11 @@ export default {
       div
         cursor: pointer
 
+        a
+          color: #FFF
+          text-decoration: none         
+
       div:first-child
-        margin-right: 2em    
+        margin-right: 2em
 
 </style>
