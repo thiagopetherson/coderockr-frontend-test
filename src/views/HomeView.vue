@@ -1,6 +1,6 @@
 <template>
   <div class="home">      
-    <PostList v-for="(post, index) in posts" :key="index" :post="post" :index="index" :displayNormal="displayNormal ? 'row' : 'row-reverse'" @actionNextPosts="nextPosts" />
+    <PostList v-for="(post, index) in posts" :key="index" :post="post" :index="index" :displayNormal="displayNormal ? 'row' : 'row-reverse'" :scrollHeightPrevious="scrollHeightPrevious" @actionNextPosts="nextPosts($event)" />
     <div v-if="loading" class="loading">
       <img src="@/assets/loading.gif">
     </div>
@@ -19,6 +19,7 @@ export default {
       page: 1,
       loading: false,
       displayNormal: true,
+      scrollHeightPrevious: 0,
     }
   },
   methods: {
@@ -31,9 +32,11 @@ export default {
         console.log(error)
       })     
     },
-    nextPosts () {    
+    nextPosts (event) {    
       this.loading = true
       this.page++
+      this.scrollHeightPrevious = event.scrollHeight
+
       this.axios.get(`${this.baseUrl}?_page=${this.page}&_limit=3`)
       .then(response => {            
         response.data.forEach(item => {         
@@ -47,6 +50,7 @@ export default {
       .finally(() => {        
         this.loading = false
       }) 
+
     }
   },
   beforeMount () {

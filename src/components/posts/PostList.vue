@@ -19,11 +19,11 @@ import globalMixins from '@/mixins/globalMixins'
 
 export default {
   name: 'PostList',
-  props: ['post','index','displayNormal'],
+  props: ['post','index','displayNormal','scrollHeightPrevious'],
   mixins: [globalMixins],
   data () {
     return {
-      direction: this.displayNormal
+      direction: this.displayNormal,     
     }
   },
   methods: {
@@ -31,10 +31,9 @@ export default {
       // Infinite Scroll
       window.onscroll = () => {        
         let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight >= document.documentElement.scrollHeight
-       
-        if (bottomOfWindow) {
-          this.$emit('actionNextPosts')         
-        }
+               
+        if (bottomOfWindow && (this.scrollHeightPrevious !== document.documentElement.scrollHeight))
+          this.$emit('actionNextPosts', {scrollHeight:  document.documentElement.scrollHeight})
       }
     }
   },

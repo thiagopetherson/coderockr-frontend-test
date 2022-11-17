@@ -35,8 +35,10 @@ export default {
 
 .post-container
   width: 100%
-  height: 2030px // 1612px
+  height: 100%
+  // height: 2030px // 1612px
   @include display-direction-justify-align($jus: center)   
-  margin-top: 5vh
+  padding-top: 5vh
+  padding-bottom: 15vh
 
 </style>
