@@ -2,7 +2,7 @@
   <div class="post-container-item">
     <div class="post-container-item-header">
       <div class="post-container-item-img">
-        <img :src="`https://image.tmdb.org/t/p/w500/uy3NhZq5IMw9c7vSoP2Z1GsQOJo.jpg`" />
+        <img :src="post.image" />
       </div>
       <div class="post-container-item-info">
         <p class="post-container-item-info-date">{{ brazilianDate(post.createdAt) }}</p>
@@ -11,7 +11,7 @@
      </div>   
     </div>
     <div class="post-container-item-body">
-      <p class="post-container-item-body-text">{{ post.content }}</p>
+      <p class="post-container-item-body-text" v-html="post.content"></p>
     </div>
   </div>
 </template>
@@ -35,13 +35,13 @@ export default {
 
 .post-container-item
   width: 67%  
-  height: 1612px
+  // min-height: 79% // 1612px
   @include display-direction-justify-align($dir: column)      
   background-color: $white-color
 
   .post-container-item-header
     width: 100%
-    height: 39.5%
+    height: 640px // 39.5%
     display: flex
 
     .post-container-item-img
@@ -74,15 +74,13 @@ export default {
   .post-container-item-body
     width: 100%
     height: 60%
-    @include display-direction-justify-align($jus: center, $ali: center)   
+    @include display-direction-justify-align($dis: flex, $dir: column, $jus: center, $ali: center)
 
-  .post-container-item-body-text
-    width: 65%
-    @include font($fs: 24px, $lh: 34px, $fw: 400)    
-    color: #2D2D2D
-    
-
-
-
+    .post-container-item-body-text
+      width: 65%
+      padding-top: 8%
+      padding-bottom: 8%
+      @include font($fs: 24px, $lh: 34px, $fw: 400)    
+      color: #2D2D2D
 
 </style>
