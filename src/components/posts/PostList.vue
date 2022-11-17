@@ -1,11 +1,11 @@
 <template>  
-  <div class="post-container" :class="[postType]" :style="{ flexDirection: direction }">
-    <div class="post-container-img" :class="[`${postType}-img`]">
+  <div class="post-container" :class="postType">
+    <div class="post-container-img" :class="[`${getPostTypeClass()}-img`]">
       <img :src="`${post.image}`" />
     </div>
-    <div class="post-container-body" :class="[`${postType}-body`]">
-      <p class="post-container-body-author" :class="[`${postType}-body-author`]">{{ post.author.name }}</p>
-      <p class="post-container-body-title" :class="[`${postType}-body-title`]">{{ post.title }}</p>
+    <div class="post-container-body" :class="[`${getPostTypeClass()}-body`]">
+      <p class="post-container-body-author" :class="[`${getPostTypeClass()}-body-author`]">{{ post.author.name }}</p>
+      <p class="post-container-body-title" :class="[`${getPostTypeClass()}-body-title`]">{{ post.title }}</p>
       <p class="post-container-body-description">{{ characterLimiter(post.content, 120) }}...</p>
       <router-link class="post-container-body-icon" :to="`/post/${post.id}`">
         <span class="material-symbols-outlined">keyboard_double_arrow_right</span>
@@ -32,14 +32,27 @@ export default {
       window.onscroll = () => {        
         let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight >= document.documentElement.scrollHeight
                
-        if (bottomOfWindow && (this.scrollHeightPrevious !== document.documentElement.scrollHeight))
+        if ( bottomOfWindow && (this.scrollHeightPrevious !== document.documentElement.scrollHeight) )
           this.$emit('actionNextPosts', {scrollHeight:  document.documentElement.scrollHeight})
       }
+    },
+    getPostTypeClass () {
+      return (this.index + 1) % 3 === 0 ? 'post-single-container' : 'post-multiple-container'
     }
   },
   computed: { 
     postType () {
-      return (this.index + 1) % 3 === 0 ? 'post-unique-container' : 'post-multiple-container'
+      // Defining the post type class
+      let classes = this.getPostTypeClass()
+      classes = classes === 'post-multiple-container' ? `${classes} ${this.direction}` : 'post-single-container' 
+      
+      // Positioning of the single post
+      if ( this.direction === 'post-container-reverse' && classes === 'post-single-container' )
+        return  `${classes} post-single-container-justify-start`
+      else if ( this.direction === 'post-container-normal' && classes === 'post-single-container' )
+        return `${classes} post-single-container-justify-end`
+
+      return classes  
     }
   },
   mounted () { 
@@ -99,31 +112,39 @@ export default {
       padding-top: 2%
       padding-bottom: 2%
 
-.post-unique-container
+.post-single-container
   width: 100%
   height: 640px
-  justify-content: flex-end
 
-  .post-unique-container-img
+  .post-single-container-img
     width: 33%   
 
     img
       width: 100%
       height: 100%
 
-  .post-unique-container-body
+  .post-single-container-body
     width: 33%    
     padding: 8% 4% 8% 4%
 
-    .post-unique-container-body-author
+    .post-single-container-body-author
       line-height: 24px
 
-    .post-unique-container-body-title      
+    .post-single-container-body-title      
       line-height: 43px      
       padding-top: 3.5%
       padding-bottom: 3.5%
 
+.post-container-normal
+  flex-direction: row
+
 .post-container-reverse
   flex-direction: row-reverse
+
+.post-single-container-justify-start
+  justify-content: flex-start
+
+.post-single-container-justify-end
+  justify-content: flex-end
 
 </style>
