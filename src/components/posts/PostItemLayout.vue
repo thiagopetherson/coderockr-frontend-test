@@ -22,10 +22,7 @@ import globalMixins from '@/mixins/globalMixins'
 export default {
   name: 'PostItemLayout',
   props: ['post'],
-  mixins: [globalMixins],
-  mounted () {
-    console.log(this.post)
-  }
+  mixins: [globalMixins]
 }
 </script>
 

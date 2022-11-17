@@ -10,29 +10,16 @@
               Posts
             </router-link>
           </div>
-          <div class="" @click="showContactModal">Contact</div>
+          <div class="" @click="this.$emit('showContactModal')">Contact</div>
         </div>
-    </div>
-    <ContactModalLayout v-if="showModal" @closeModal="showModal = false" /> 
+    </div>    
   </header>
 </template>
 
 <script>
-import ContactModalLayout from '@/components/layouts/ContactModalLayout.vue'
 
 export default {
-  name: 'MenuLayout',
-  components: { ContactModalLayout },
-  data () {
-    return {
-      showModal: false,
-    }
-  },
-  methods: {
-    showContactModal () {
-      this.showModal = !this.showModal
-    }
-  }
+  name: 'MenuLayout',  
 }
 </script>
 

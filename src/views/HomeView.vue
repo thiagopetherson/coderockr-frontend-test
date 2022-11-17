@@ -63,7 +63,7 @@ export default {
 @import "@/assets/sass/mixins.sass"
 
 .home
-  width: 100%
+  width: 100%  
   @include display-direction-justify-align($dis: flex)   
   flex-wrap: wrap
 

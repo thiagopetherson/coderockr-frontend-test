@@ -9,7 +9,16 @@ import ContactFormLayout from '@/components/layouts/ContactFormLayout.vue'
 
 export default {
   name: 'ContactModalLayout',
-  components: { ContactFormLayout },  
+  components: { ContactFormLayout },
+  methods: {
+    setHeight () {      
+      let bodyHeight = document.body.scrollHeight
+      document.querySelector('.contact-container').setAttribute('style',`height: ${bodyHeight}px`)
+    }
+  },
+  mounted() {
+    this.setHeight()
+  }
 }
 </script>
 
@@ -18,11 +27,9 @@ export default {
 
 .contact-container
   position: absolute
-  height: 100vh
   width: 100%
   @include display-direction-justify-align($dir: column, $jus: center, $ali: center) 
   background: rgba(0, 0, 0, 0.6)
   z-index: 10
-  overflow: hidden
 
 </style>
