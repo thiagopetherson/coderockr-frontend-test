@@ -13,6 +13,7 @@ import PostList from '@/components/posts/PostList.vue'
 export default {
   name: 'HomeView',
   components: { PostList },
+  props: ['showModal'],
   data () {
     return {
       posts: [],
@@ -33,6 +34,9 @@ export default {
       })     
     },
     nextPosts (event) {    
+      if (this.showModal)
+        return false
+
       this.loading = true
       this.page++
       this.scrollHeightPrevious = event.scrollHeight
@@ -53,7 +57,7 @@ export default {
 
     }
   },
-  beforeMount () {
+  beforeMount () {    
     this.getPosts()
   }  
 }
@@ -63,7 +67,8 @@ export default {
 @import "@/assets/sass/mixins.sass"
 
 .home
-  width: 100%  
+  width: 100%
+  height: 100vh
   @include display-direction-justify-align($dis: flex)   
   flex-wrap: wrap
 

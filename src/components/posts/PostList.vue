@@ -66,6 +66,7 @@ export default {
 @import "@/assets/sass/mixins.sass"
 
 .post-container
+  height: 100%
   margin-top: 5vh
   display: flex
 
@@ -74,14 +75,14 @@ export default {
     background: $white-color
 
     .post-container-body-author
-      @include font($fs: 24px, $lh: 34px, $fw: 400)      
+      @include font($fs: 2.4rem, $lh: normal, $fw: 400)      
 
     .post-container-body-title
-      @include font($fs: 36px, $lh: 43px, $fw: 700)
+      @include font($fs: 3.6rem, $lh: normal, $fw: 700)
       color: $primary-color     
 
     .post-container-body-description
-      @include font($fs: 24px, $lh: 34px, $fw: 400)
+      @include font($fs: 2.4rem, $lh: normal, $fw: 400)
       font-style: normal      
       color: #2D2D2D
 

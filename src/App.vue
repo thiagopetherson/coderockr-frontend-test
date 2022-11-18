@@ -1,7 +1,7 @@
 <template>
   <div id="app">    
     <MenuLayout @showContactModal="showModal = !showModal" />
-    <router-view :key="$route.fullPath"></router-view>
+    <router-view :key="$route.fullPath" :showModal="showModal"></router-view>
     <ContactModalLayout v-if="showModal" @closeModal="showModal = false" />
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
     return {
       showModal: false,
     }
-  }
+  },
 }
 </script>
 
