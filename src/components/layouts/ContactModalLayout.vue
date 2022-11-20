@@ -19,8 +19,7 @@ export default {
         document.body.setAttribute('style',`overflow: hidden`)     
     }
   },
-  mounted() {
-    console.log(this.$route.name)
+  mounted() {    
     this.setHeight()
   }
 }

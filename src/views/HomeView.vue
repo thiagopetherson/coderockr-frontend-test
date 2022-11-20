@@ -1,6 +1,6 @@
 <template>
   <div class="home">      
-    <PostList v-for="(post, index) in posts" :key="index" :post="post" :index="index" :displayNormal="displayNormal ? 'post-container-normal' : 'post-container-reverse'" :scrollHeightPrevious="scrollHeightPrevious" @actionNextPosts="nextPosts($event)" />
+    <PostListLayout v-for="(post, index) in posts" :key="index" :post="post" :index="index" :displayNormal="displayNormal ? 'post-container-normal' : 'post-container-reverse'" :scrollHeightPrevious="scrollHeightPrevious" @actionNextPosts="nextPosts($event)" />
     <div v-if="loading" class="loading">
       <img src="@/assets/loading.gif">
     </div>
@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import PostList from '@/components/posts/PostList.vue'
+import PostListLayout from '@/components/posts/PostListLayout.vue'
 
 export default {
   name: 'HomeView',
-  components: { PostList },
+  components: { PostListLayout },
   props: ['showModal'],
   data () {
     return {

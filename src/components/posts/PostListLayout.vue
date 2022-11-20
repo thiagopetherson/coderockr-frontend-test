@@ -18,7 +18,7 @@
 import globalMixins from '@/mixins/globalMixins'
 
 export default {
-  name: 'PostList',
+  name: 'PostListLayout',
   props: ['post','index','displayNormal','scrollHeightPrevious'],
   mixins: [globalMixins],
   data () {
