@@ -41,12 +41,22 @@ export default {
   // height: 50%
   background-color: $white-color
 
+  @media only screen and (min-width: 1px) and (max-width: 768px)
+    width: 95%
+
+  @media only screen and (min-width: 769px) and (max-width: 1279px)
+    width: 80%
+
+  @media only screen and (min-width: 1280px) and (max-width: 1761px)
+    width: 52%
+
   .form-container-close   
     width: 100%
     @include display-direction-justify-align($jus: flex-end)    
 
-    .close-modal      
-      font-size: 2.5em        
+    .close-modal     
+      
+      @include font($fs: 4.8rem, $fw: 600)        
       color: #2D2D2D
       border-radius: 100%
       margin-top: 15px
@@ -56,10 +66,13 @@ export default {
   .form-container-title
     h1
       color: $primary-color
-      @include font($fs: 36px, $lh: 43px, $fw: 700)     
+      @include font($fs: 3.6rem, $lh: 43px, $fw: 700)     
 
   .form-container-body
     width: 70%
+
+    @media only screen and (min-width: 1px) and (max-width: 768px)
+      width: 80%
 
     form
       width: 100%     
@@ -69,7 +82,7 @@ export default {
 
       .label-form
         margin: 15px 0
-        @include font($fs: 24px, $lh: 34px, $fw: 400)       
+        @include font($fs: 2.4rem, $lh: 34px, $fw: 400)       
 
       .input-form
         box-sizing: border-box
@@ -88,7 +101,7 @@ export default {
         align-self: center        
         width: 170px
         font-style: normal
-        @include font($fs: 24px, $lh: 34px, $fw: 500)        
+        @include font($fs: 2.4rem, $lh: 34px, $fw: 500)        
         background: #2D2D2D
         border-radius: 4px
         color: $white-color

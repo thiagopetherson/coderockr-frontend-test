@@ -92,7 +92,7 @@ export default {
           margin-bottom: 2%
 
       .post-container-item-info-title
-        @include font($fs: 36px, $lh: 43px, $fw: 700)        
+        @include font($fs: 3.6rem, $lh: 43px, $fw: 700)        
         color: $primary-color
   
   .post-container-item-body
@@ -105,7 +105,7 @@ export default {
       width: 65%
       padding-top: 8%
       padding-bottom: 8%
-      @include font($fs: 24px, $lh: 34px, $fw: 400)    
+      @include font($fs: 2.4rem, $lh: 34px, $fw: 400)    
       color: #2D2D2D
 
       @media only screen and (min-width: 1px) and (max-width: 1024px)

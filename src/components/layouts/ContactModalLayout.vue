@@ -1,5 +1,5 @@
 <template>
-  <div class="contact-container">        
+  <div class="contact-container" @click.stop.self="this.$emit('closeModal')">        
     <ContactFormLayout @actionCloseModal="this.$emit('closeModal')" />   
   </div>
 </template>
@@ -11,11 +11,12 @@ export default {
   name: 'ContactModalLayout',
   components: { ContactFormLayout },
   methods: {
-    setHeight () {            
-      let bodyHeight = this.$route.name === "home" ? window.screen.height : document.body.scrollHeight
+    setHeight () {
+      let bodyWidth = window.innerWidth // For small devices
+      let bodyHeight = this.$route.name === "home" || bodyWidth < 769 ? window.screen.height : document.body.scrollHeight
       document.querySelector('.contact-container').setAttribute('style',`height: ${bodyHeight}px`)
 
-      if ( this.$route.name === "home" )
+      if ( this.$route.name === "home" || bodyWidth < 769 )
         document.body.setAttribute('style',`overflow: hidden`)     
     }
   },
