@@ -20,6 +20,7 @@ export default {
   },
   methods: {
     actionModal () {
+      // Closing the modal and assigning the overflow 
       this.showModal = false
       document.body.setAttribute('style',`overflow: visible`)
     }

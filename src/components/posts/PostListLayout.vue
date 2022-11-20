@@ -29,14 +29,17 @@ export default {
   methods: {
     getNextPosts () {
       // Infinite Scroll
-      window.onscroll = () => {        
+      window.onscroll = () => {    
+        //     
         let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight >= document.documentElement.scrollHeight
-               
+        
+        // Stopping requests if scroll reaches limit (Don't to make unnecessary requests)
         if ( bottomOfWindow && (this.scrollHeightPrevious !== document.documentElement.scrollHeight) )
           this.$emit('actionNextPosts', {scrollHeight:  document.documentElement.scrollHeight})
       }
     },
     getPostTypeClass () {
+      // Defining if the row will be with single or multiple post
       return (this.index + 1) % 3 === 0 ? 'post-single-container' : 'post-multiple-container'
     }
   },

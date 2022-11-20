@@ -1,6 +1,9 @@
 <template>
   <div class="home">      
-    <PostListLayout v-for="(post, index) in posts" :key="index" :post="post" :index="index" :displayNormal="displayNormal ? 'post-container-normal' : 'post-container-reverse'" :scrollHeightPrevious="scrollHeightPrevious" @actionNextPosts="nextPosts($event)" />
+    <PostListLayout v-for="(post, index) in posts" :key="index" :post="post" :index="index" 
+    :displayNormal="displayNormal ? 'post-container-normal' : 'post-container-reverse'" 
+    :scrollHeightPrevious="scrollHeightPrevious" @actionNextPosts="nextPosts($event)" 
+    />
     <div v-if="loading" class="loading">
       <img src="@/assets/loading.gif">
     </div>
@@ -24,7 +27,8 @@ export default {
     }
   },
   methods: {
-    async getPosts () {      
+    async getPosts () {  
+      // Initial request    
       await this.axios.get(`${this.baseUrl}?_page=${this.page}&_limit=3`)        
       .then(response => {        
         this.posts = response.data
@@ -33,7 +37,8 @@ export default {
         console.log(error)
       })     
     },
-    nextPosts (event) {    
+    nextPosts (event) {
+      // This request is made from the event that occurs on the infinite scroll
       if (this.showModal)
         return false
 

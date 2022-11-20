@@ -12,7 +12,8 @@ export default {
   components: { ContactFormLayout },
   methods: {
     setHeight () {
-      let bodyWidth = window.innerWidth // For small devices
+      // Setting the modal positioning
+      let bodyWidth = window.innerWidth
       let bodyHeight = this.$route.name === "home" || bodyWidth < 769 ? window.screen.height : document.body.scrollHeight
       document.querySelector('.contact-container').setAttribute('style',`height: ${bodyHeight}px`)
 
