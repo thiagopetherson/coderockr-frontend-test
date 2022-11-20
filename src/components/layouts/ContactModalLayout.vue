@@ -11,12 +11,16 @@ export default {
   name: 'ContactModalLayout',
   components: { ContactFormLayout },
   methods: {
-    setHeight () {      
-      let bodyHeight = document.body.scrollHeight
+    setHeight () {            
+      let bodyHeight = this.$route.name === "home" ? window.screen.height : document.body.scrollHeight
       document.querySelector('.contact-container').setAttribute('style',`height: ${bodyHeight}px`)
+
+      if ( this.$route.name === "home" )
+        document.body.setAttribute('style',`overflow: hidden`)     
     }
   },
   mounted() {
+    console.log(this.$route.name)
     this.setHeight()
   }
 }

@@ -2,7 +2,7 @@
   <div id="app">    
     <MenuLayout @showContactModal="showModal = !showModal" />
     <router-view :key="$route.fullPath" :showModal="showModal"></router-view>
-    <ContactModalLayout v-if="showModal" @closeModal="showModal = false" />
+    <ContactModalLayout v-if="showModal" @closeModal="actionModal" />
   </div>
 </template>
 
@@ -18,6 +18,12 @@ export default {
       showModal: false,
     }
   },
+  methods: {
+    actionModal () {
+      this.showModal = false
+      document.body.setAttribute('style',`overflow: visible`)
+    }
+  }
 }
 </script>
 
