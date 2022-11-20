@@ -2,7 +2,7 @@
   <header class="header-container">
     <div class="menu-items">
       <div class="nav-logo">        
-           Rockr Blog           
+        Rockr Blog           
       </div>
         <div class="nav-items">
           <div class="">

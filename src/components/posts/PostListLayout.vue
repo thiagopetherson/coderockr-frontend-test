@@ -68,6 +68,12 @@ export default {
 @import "@/assets/sass/variables.sass"
 @import "@/assets/sass/mixins.sass"
 
+/*
+ * Some of these classes are applied dynamically
+ * The classes define the placement and alignment of the post 
+ */
+
+// Global Post Style
 .post-container
   height: 100%
   margin-top: 5vh
@@ -104,6 +110,7 @@ export default {
       .material-symbols-outlined
         @include font($fw: bold)
 
+// Multiple Post Style
 .post-multiple-container
   width: 50%
   height: 33%
@@ -168,9 +175,10 @@ export default {
       padding-top: 2%
       padding-bottom: 2%
 
+// Single Post Style
 .post-single-container
   width: 100%
-  height: 64% // 640px
+  height: 64%
 
   @media only screen and (min-width: 1px) and (max-width: 768px) 
     flex-direction: row  
@@ -220,16 +228,26 @@ export default {
       padding-top: 3.5%
       padding-bottom: 3.5%
 
+// Placement Classes 
 .post-container-normal
   flex-direction: row
 
 .post-container-reverse
   flex-direction: row-reverse
+  // In this breakpoint bellow (769/1024) all posts will be in the same position
+  @media only screen and (min-width: 769px) and (max-width: 1024px) 
+    flex-direction: row
 
 .post-single-container-justify-start
   justify-content: flex-start
+  // In this breakpoint bellow (769/1024) all posts will be in the same position
+  @media only screen and (min-width: 769px) and (max-width: 1024px) 
+    flex-direction: row
 
 .post-single-container-justify-end
   justify-content: flex-end
+  // In this breakpoint bellow (769/1024) all posts will be in the same position
+  @media only screen and (min-width: 769px) and (max-width: 1024px) 
+    flex-direction: row
 
 </style>
