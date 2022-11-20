@@ -32,7 +32,6 @@ export default {
 
 .post-container-item
   width: 67%  
-  // min-height: 79% // 1612px
   @include display-direction-justify-align($dir: column)      
   background-color: $white-color
 
@@ -44,9 +43,8 @@ export default {
 
   .post-container-item-header
     width: 100%
-    height: 39.5% // 640px
+    height: 39.5%
     display: flex
-
     @media only screen and (min-width: 1px) and (max-width: 1024px)
       @include display-direction-justify-align($dir: column)
 
@@ -64,11 +62,9 @@ export default {
       width: 50%
       @include display-direction-justify-align($dir: column, $jus: center)     
       padding: 8% 8% 8% 8%
-
       @media only screen and (min-width: 1px) and (max-width: 1024px)
         width: 100%
         padding: 1% 5% 1% 5%
-
       @media only screen and (min-width: 1025px) and (max-width: 1279px)        
         padding: 1% 5% 1% 5%
       
@@ -82,11 +78,9 @@ export default {
         color: #2D2D2D
         margin-top: 8%
         margin-bottom: 8%
-
         @media only screen and (min-width: 1px) and (max-width: 1024px)
           margin-top: 2%
           margin-bottom: 2%
-
         @media only screen and (min-width: 1025px) and (max-width: 1279px)
           margin-top: 2%
           margin-bottom: 2%
@@ -107,11 +101,9 @@ export default {
       padding-bottom: 8%
       @include font($fs: 2.4rem, $lh: 34px, $fw: 400)    
       color: #2D2D2D
-
       @media only screen and (min-width: 1px) and (max-width: 1024px)
         width: 100%        
-        padding: 8% 5% 1% 5%
-      
+        padding: 8% 5% 1% 5%      
       @media only screen and (min-width: 1025px) and (max-width: 1279px)
         width: 80%
 

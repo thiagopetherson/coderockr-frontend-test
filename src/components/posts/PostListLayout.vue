@@ -82,7 +82,9 @@ export default {
     .post-container-body-title
       @include font($fs: 3.6rem, $lh: normal, $fw: 700)
       @media only screen and (min-width: 1px) and (max-width: 1279px)
-        @include font($fs: 3.0rem, $fw: 700)      
+        @include font($fs: 3.0rem, $fw: 700)
+      @media only screen and (min-width: 1280px) and (max-width: 1450px) 
+        @include font($fs: 3.2rem, $fw: 700)  
       color: $primary-color     
 
     .post-container-body-description
@@ -96,9 +98,12 @@ export default {
       color: #032937
       align-self: flex-end
 
+      .material-symbols-outlined
+        @include font($fw: bold)
+
 .post-multiple-container
   width: 50%
-  height: 33% // 320px
+  height: 33%
 
   @media only screen and (min-width: 1px) and (max-width: 768px)    
     flex-wrap: wrap    

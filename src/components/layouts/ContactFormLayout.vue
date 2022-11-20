@@ -37,8 +37,7 @@ export default {
 
 .form-container
   @include display-direction-justify-align($dir: column, $jus: center, $ali: center)
-  width: 42%
-  // height: 50%
+  width: 42% 
   background-color: $white-color
 
   @media only screen and (min-width: 1px) and (max-width: 768px)
@@ -70,7 +69,6 @@ export default {
 
   .form-container-body
     width: 70%
-
     @media only screen and (min-width: 1px) and (max-width: 768px)
       width: 80%
 

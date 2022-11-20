@@ -36,7 +36,6 @@ export default {
 .post-container
   width: 100%
   height: 100%
-  // height: 2030px // 1612px
   @include display-direction-justify-align($jus: center)   
   padding-top: 5vh
   padding-bottom: 15vh
