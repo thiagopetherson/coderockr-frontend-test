@@ -77,7 +77,7 @@ export default {
 .post-container
   height: 100%
   margin-top: 5vh
-  display: flex
+  display: flex 
 
   .post-container-body
     @include display-direction-justify-align($dir: column, $jus: center)
@@ -91,7 +91,7 @@ export default {
     .post-container-body-title
       @include font($fs: 3.6rem, $lh: normal, $fw: 700)
       @media only screen and (min-width: 1px) and (max-width: 1279px)
-        @include font($fs: 3.0rem, $fw: 700)
+        @include font($fs: 2.4rem, $fw: 700)
       @media only screen and (min-width: 1280px) and (max-width: 1450px) 
         @include font($fs: 3.2rem, $fw: 700)  
       color: $primary-color     
@@ -113,7 +113,7 @@ export default {
 // Multiple Post Style
 .post-multiple-container
   width: 50%
-  height: 33%
+  height: 33%  
 
   @media only screen and (min-width: 1px) and (max-width: 768px)    
     flex-wrap: wrap    
@@ -124,6 +124,7 @@ export default {
   
   @media only screen and (min-width: 769px) and (max-width: 1024px) 
     width: 100%
+    height: 35%
     padding-left: 2%
     padding-right: 2%
 
@@ -136,13 +137,16 @@ export default {
     padding-left: 10px
   
   @media only screen and (min-width: 1280px) and (max-width: 1761px)
-    height: 34%    
+    height: 37%    
 
   .post-multiple-container-img  
     width: 34%   
 
     @media only screen and (min-width: 1px) and (max-width: 768px)
       width: 100%
+
+    @media only screen and (min-width: 769px) and (max-width: 1024px)
+      width: 50%
 
     @media only screen and (min-width: 1025px) and (max-width: 1279px)
       width: 100%
@@ -159,6 +163,9 @@ export default {
     @media only screen and (min-width: 1px) and (max-width: 768px)
       width: 100%
       padding: 3% 3% 3% 3%
+    
+    @media only screen and (min-width: 769px) and (max-width: 1024px)
+      width: 50%
 
     @media only screen and (min-width: 1025px) and (max-width: 1279px)
       width: 100%
@@ -188,7 +195,7 @@ export default {
     padding-right: 2%
 
   @media only screen and (min-width: 769px) and (max-width: 1024px)
-    height: 33%
+    height: 35%
     padding-left: 2%
     padding-right: 2%
 
@@ -201,10 +208,10 @@ export default {
     width: 40%
 
     @media only screen and (min-width: 1px) and (max-width: 768px)
-      width: 100%
+      width: 100%   
 
     @media only screen and (min-width: 769px) and (max-width: 1024px)
-      width: 34%
+      width: 50%
 
     img
       width: 100%
@@ -218,7 +225,8 @@ export default {
       width: 100%
     
     @media only screen and (min-width: 769px) and (max-width: 1024px)
-      width: 66%
+      padding: 8% 8% 8% 8%   
+      width: 50%
 
     .post-single-container-body-author
       line-height: 24px
@@ -227,6 +235,9 @@ export default {
       line-height: 43px      
       padding-top: 3.5%
       padding-bottom: 3.5%
+
+      @media only screen and (min-width: 769px) and (max-width: 1024px)
+        line-height: normal
 
 // Placement Classes 
 .post-container-normal

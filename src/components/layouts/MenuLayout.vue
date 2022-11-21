@@ -41,7 +41,10 @@ export default {
     @include display-direction-justify-align($jus: space-between, $ali: center)     
     font-style: normal
     @include font($fs: 3.2rem, $lh: 38px, $fw: 500)
-    @media only screen and (min-width: 1px) and (max-width: 768px)
+    @media only screen and (min-width: 1px) and (max-width: 280px)
+      width: 99%
+      @include font($fs: 1.8rem, $fw: 500)
+    @media only screen and (min-width: 281px) and (max-width: 768px)
       width: 95%
       @include font($fs: 2.4rem, $fw: 500)    
     @media only screen and (min-width: 769px) and (max-width: 1024px)

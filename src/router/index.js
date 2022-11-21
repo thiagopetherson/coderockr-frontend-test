@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 const HomeView = () => import('@/views/HomeView.vue')
 const PostView = () => import('@/views/PostView.vue')
 
@@ -14,10 +14,14 @@ const routes = [
     component: PostView,
     props: true,
   },
+  {
+    path: '/:catchAll(.*)',
+    redirect: '/'
+  }
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 
