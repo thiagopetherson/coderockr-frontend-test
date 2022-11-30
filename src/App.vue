@@ -1,30 +1,35 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div id="app">    
+    <MenuLayout @showContactModal="showModal = !showModal" />
+    <router-view :key="$route.fullPath" :showModal="showModal"></router-view>
+    <ContactModalLayout v-if="showModal" @closeModal="actionModal" />
+  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import MenuLayout from './components/layouts/MenuLayout.vue'
+import ContactModalLayout from '@/components/layouts/ContactModalLayout.vue'
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  name: 'App',
+  components: { MenuLayout, ContactModalLayout },
+  data () {
+    return {
+      showModal: false,
+    }
+  },
+  methods: {
+    actionModal () {
+      // Closing the modal and assigning the overflow 
+      this.showModal = false
+      document.body.setAttribute('style',`overflow: visible`)
     }
   }
 }
+</script>
+
+<style scoped lang="sass">
+#app 
+  display: flex
+  flex-direction: column
 </style>
